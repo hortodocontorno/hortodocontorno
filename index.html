@@ -48,24 +48,23 @@
   .topbar{
     width:min(1180px,100%);margin:0 auto;
     min-height:78px;
-    padding:12px 16px 12px 20px;
-    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;
-    background:rgba(23,59,44,.97);
+    padding:12px 24px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(23,59,44,.98);
     border:1px solid rgba(255,255,255,.12);
     border-radius:28px;
     box-shadow:0 16px 34px -18px rgba(10,32,22,.65);
     backdrop-filter:blur(14px);
   }
-  .logo img{height:52px;width:auto;object-fit:contain;filter:none}
-  .nav-links{display:flex;justify-content:center;align-items:center;gap:28px}
-  .nav-links a{font-size:13.5px;font-weight:700;color:#fff;opacity:.88}
-  .nav-links a:hover{opacity:1;color:var(--leaf-light)}
-  .contact-inline{display:flex;align-items:center;gap:12px}
-  .phone-box{display:flex;flex-direction:column;align-items:flex-end;line-height:1.15}
-  .phone-box small{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.68);font-weight:800}
-  .phone-box strong{font-size:15px;color:#fff}
-  .wa-mini{width:42px;height:42px;border-radius:14px;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 22px -12px rgba(37,211,102,.8)}
-  .wa-mini svg{width:22px;height:22px}
+  .phone-main{
+    display:inline-flex;align-items:center;justify-content:center;gap:13px;
+    color:#fff;font-weight:800;font-size:clamp(22px,2.2vw,30px);
+    letter-spacing:.01em;line-height:1;
+    padding:10px 18px;border-radius:18px;
+    transition:background .2s ease,transform .2s ease;
+  }
+  .phone-main:hover{background:rgba(255,255,255,.08);transform:translateY(-1px)}
+  .phone-main svg{width:25px;height:25px;stroke:#fff;fill:none;stroke-width:2;flex:none}
 
   /* HERO / BANNER RESPONSIVO */
   .hero{padding:116px 0 34px;background:var(--cream)}
@@ -146,7 +145,17 @@
   .contact-row span,.contact-row a{color:rgba(255,255,255,.72);font-size:14px}
   .contact-icon{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.1);display:grid;place-items:center;flex:none}
   .contact-icon svg{width:17px;height:17px;stroke:var(--leaf-light)}
-  .directions{margin-top:26px;display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:800;width:max-content;border-bottom:1px solid rgba(255,255,255,.48);padding-bottom:4px}
+  .directions{
+    margin-top:30px;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    width:max-content;min-width:210px;
+    padding:16px 24px;border-radius:999px;
+    background:#fff;color:var(--forest);font-weight:900;font-size:15px;letter-spacing:.05em;text-transform:uppercase;
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:0 14px 30px -16px rgba(0,0,0,.55);
+    transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+  }
+  .directions:hover{transform:translateY(-2px);box-shadow:0 18px 34px -16px rgba(0,0,0,.7);background:var(--leaf-light)}
+  .directions span{font-size:18px;line-height:1}
   .map-frame{min-height:500px;border-radius:30px;overflow:hidden;border:1px solid rgba(255,255,255,.13);box-shadow:0 28px 60px -28px rgba(0,0,0,.55)}
   .map-frame iframe{width:100%;height:100%;min-height:500px;border:0;filter:saturate(.82)}
 
@@ -156,21 +165,17 @@
   footer img{height:54px;width:auto;filter:brightness(0) invert(1)}
   footer p{font-size:12.5px;text-align:right}
 
-  /* WHATSAPP FIXO */
-  .wa-float{position:fixed;right:22px;bottom:22px;z-index:120;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(37,211,102,.72);transition:transform .2s ease}
-  .wa-float:hover{transform:translateY(-3px) scale(1.02)}
-  .wa-float svg{width:29px;height:29px}
 
   @media(max-width:900px){
-    .topbar{grid-template-columns:auto 1fr;gap:12px}.nav-links{display:none}.contact-inline{justify-self:end}
+    .topbar{justify-content:center}
     .intro-head{grid-template-columns:1fr}.intro-head .section-copy{justify-self:start}
     .store-grid{grid-template-columns:1fr}.store-main{min-height:430px}.store-side{grid-template-columns:1fr 1fr}.store-small{min-height:220px}
     .grass-card{grid-template-columns:1fr}.grass-photo{min-height:420px}.location-grid{grid-template-columns:1fr}.location-copy{padding-right:0}
   }
   @media(max-width:640px){
-    .container{width:min(100% - 24px,1180px)}.topbar-wrap{top:10px;padding:0 10px}.topbar{min-height:68px;border-radius:22px;padding:10px 12px}.logo img{height:45px}.phone-box small{display:none}.phone-box strong{font-size:12px}.wa-mini{width:38px;height:38px;border-radius:12px}
+    .container{width:min(100% - 24px,1180px)}.topbar-wrap{top:10px;padding:0 10px}.topbar{min-height:66px;border-radius:22px;padding:8px 12px}.phone-main{font-size:21px;gap:10px;padding:9px 12px}.phone-main svg{width:22px;height:22px}
     .hero{padding-top:92px}.hero-card{border-radius:24px;aspect-ratio:941 / 1672}.hero-banner-desktop{display:none}.hero-banner-mobile{display:block}
-    .intro,.categories,.grass,.gallery,.location{padding:72px 0}.store-main{min-height:390px}.store-side{grid-template-columns:1fr}.store-small{min-height:260px}.categories-head{display:block}.categories-head .section-copy{margin-top:14px}.categories-grid{grid-template-columns:1fr}.category-card{min-height:380px}.grass-copy{padding:34px 28px}.grass-photo{min-height:330px}.location-copy{padding-top:0}.map-frame,.map-frame iframe{min-height:390px}.footer-row{flex-direction:column;align-items:flex-start}.footer-row p{text-align:left}.wa-float{width:56px;height:56px;right:16px;bottom:16px}
+    .intro,.categories,.grass,.gallery,.location{padding:72px 0}.store-main{min-height:390px}.store-side{grid-template-columns:1fr}.store-small{min-height:260px}.categories-head{display:block}.categories-head .section-copy{margin-top:14px}.categories-grid{grid-template-columns:1fr}.category-card{min-height:380px}.grass-copy{padding:34px 28px}.grass-photo{min-height:330px}.location-copy{padding-top:0}.map-frame,.map-frame iframe{min-height:390px}.footer-row{flex-direction:column;align-items:flex-start}.footer-row p{text-align:left}
   }
 </style>
 </head>
@@ -178,32 +183,12 @@
 
 <div class="topbar-wrap">
   <header class="topbar">
-    <a class="logo" href="#top" aria-label="Horto do Contorno">
-      <img src="LOGO - HORTO.svg" alt="Horto do Contorno">
+    <a href="tel:+557536148888" class="phone-main" aria-label="Ligar para o Horto do Contorno no telefone 75 3614-8888">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.91.34 1.8.66 2.66a2 2 0 0 1-.45 2.11L5.91 9.79a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.11-.45c.86.32 1.75.54 2.66.66A2 2 0 0 1 22 16.92z"/></svg>
+      <span>(75) 3614-8888</span>
     </a>
-
-    <nav class="nav-links" aria-label="Navegação principal">
-      <a href="#horto">O Horto</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#grama">Grama</a>
-      <a href="#visite">Localização</a>
-    </nav>
-
-    <div class="contact-inline">
-      <a href="tel:+557536148888" class="phone-box" aria-label="Telefone do Horto do Contorno">
-        <small>Telefone</small>
-        <strong>(75) 3614-8888</strong>
-      </a>
-      <a href="https://wa.me/5575996148888" target="_blank" rel="noopener" class="wa-mini" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.9-4.44 9.9-9.9S17.5 2 12.04 2zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.11.6-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.81.86.27.14.45.2.51.32.07.11.07.66-.17 1.34z"/></svg>
-      </a>
-    </div>
   </header>
 </div>
-
-<a href="https://wa.me/5575996148888" target="_blank" rel="noopener" class="wa-float" aria-label="Falar pelo WhatsApp">
-  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.9-4.44 9.9-9.9S17.5 2 12.04 2zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.11.6-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.81.86.27.14.45.2.51.32.07.11.07.66-.17 1.34z"/></svg>
-</a>
 
 <main id="top">
   <!-- Banners desktop/mobile incorporados no próprio HTML para evitar erro de caminho no Git -->
@@ -289,7 +274,7 @@
           <div class="grass-points">
             <span>Residencial</span><span>Comercial</span><span>Pronta para instalar</span>
           </div>
-          <a href="https://wa.me/5575996148888" target="_blank" rel="noopener" class="text-link">Consultar disponibilidade <span>↗</span></a>
+          <a href="https://wa.me/557536148888" target="_blank" rel="noopener" class="text-link">Consultar disponibilidade <span>↗</span></a>
         </div>
       </div>
     </div>
@@ -334,11 +319,11 @@
           </div>
           <div class="contact-row">
             <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-            <div><strong>WhatsApp</strong><a href="https://wa.me/5575996148888" target="_blank" rel="noopener">(75) 99614-8888</a></div>
+            <div><strong>WhatsApp</strong><a href="https://wa.me/557536148888" target="_blank" rel="noopener">(75) 3614-8888</a></div>
           </div>
         </div>
 
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Av.+Eduardo+Fr%C3%B3es+da+Mota%2C+S%C3%A3o+Jo%C3%A3o%2C+Feira+de+Santana+-+BA%2C+44051-080" target="_blank" rel="noopener" class="directions">Como chegar <span>↗</span></a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Av.+Eduardo+Fr%C3%B3es+da+Mota%2C+S%C3%A3o+Jo%C3%A3o%2C+Feira+de+Santana+-+BA%2C+44051-080" target="_blank" rel="noopener" class="directions">COMO CHEGAR <span>↗</span></a>
       </div>
 
       <div class="map-frame">
